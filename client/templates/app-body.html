@@ -22,14 +22,7 @@
           <a href="{{pathFor 'join'}}" class="btn-secondary">Join</a>
         </div>
       {{/if}}
-      <div class="wrapper-auth">
-        <form>
-          <div class="input-symbol">
-            <input type="search" name="search" placeholder="Search">
-            <span class="icon-edit" title="Search"></span>
-          </div>
-        </form>
-      </div>
+      {{> search}}
       <div class="list-todos">
         <a class="js-new-list link-list-new"><span class="icon-plus"></span>New List</a>
 
