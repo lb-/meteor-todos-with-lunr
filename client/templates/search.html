@@ -1,0 +1,21 @@
+<template name="search">
+  <div class="wrapper-auth">
+    <!-- using 'wrapper-auth' class as it saves writing extra css -->
+    <form>
+      <div class="input-symbol">
+        <input type="search" name="search" id="search" placeholder="Search" value="{{search}}">
+        <span class="icon-edit" title="Search"></span>
+      </div>
+    </form>
+  </div>
+  {{#if search}}
+  <h3>Search Results</h3>
+  <div class="list-items">
+    {{#each searchResults}}
+    <div class="list-item" style="height:22px;">
+      {{text}}
+    </div>
+    {{/each}}
+  </div>
+  {{/if}}
+</template>
