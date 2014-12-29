@@ -28,6 +28,7 @@ iron:router@0.9.4
 jquery@1.0.2
 json@1.0.2
 launch-screen@1.0.1
+lbee:lunr@0.5.7_1
 less@1.0.12
 livedata@1.0.12
 localstorage@1.0.2
