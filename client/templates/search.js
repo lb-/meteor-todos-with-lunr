@@ -1,5 +1,6 @@
 "use strict";
 
+//function that returns a created index
 var createIndex = function () {
   var index = lunr(function () {
     this.field('text');
@@ -7,7 +8,6 @@ var createIndex = function () {
   });
   return index;
 };
-
 
 Template.search.rendered = function () {
   //initiate the search session
@@ -20,6 +20,7 @@ Template.search.helpers({
     var search = Session.get('search');
     return search;
   },
+  //create a helper that returns the search results
   searchResults: function () {
     var index, docs, searchResults;
     var search = Session.get('search');
@@ -33,8 +34,12 @@ Template.search.helpers({
         //add the todo to the index
         index.add(todo);
       });
+      //process the search results
+      //[{ref: 'mongoId', score: 0.923},...]
       searchResults = index.search(search);
+      //for each of the search results score...
       _.each(searchResults, function (searchResult) {
+        //only add if the results are above zero, zero means no result
         if (searchResult.score > 0) {
           //add doc to the list of valid results
           results.push(_.findWhere(docs, {_id: searchResult.ref}));
@@ -46,6 +51,7 @@ Template.search.helpers({
 });
 
 Template.search.events({
+  //update the search session when the search input changes
   'keyup #search, change #search' : function (event) {
     var search;
     search = event.target.value;
